@@ -1,0 +1,17 @@
+<div>
+	<div class="col-sm-4 list-group" data-ng-repeat="id in cameraIds">
+		<a href="#" class="list-group-item" data-ng-class="{'alert alert-danger': errors[id]}">
+			<span data-ng-if="!cameras[id]">
+				<h4 class="list-group-item-heading">{{id}}</h4>
+				<p class="list-group-item-text" data-ng-if="load[id]">Loading...</p>
+				<p class="list-group-item-text" data-ng-if="errors[id]">{{errors[id]}}</p>
+			</span>
+			<span data-ng-if="cameras[id]">
+				<h4 class="list-group-item-heading">{{cameras[ id ].name}}</h4>
+				<p class="list-group-item-text">Image Count: {{cameras[ id ].images.length}}</p>
+				<p class="list-group-item-text">Total Data Used: {{countData( cameras[ id ].images ) * 1024 | bytes:'megabytes' }}</p>
+				<p class="list-group-item-text">Largest Image Size: {{getImageBySize( cameras[ id ].images ) * 1024 | bytes:'megabytes' }}</p>
+			</span>
+		</a>
+	</div>
+</div>
